@@ -1,0 +1,25 @@
+{
+  "name": "shortly-back",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev-start": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Eduardo Pacheco",
+    "github": "https://github.com/EduardoPacheco12"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "nodemon": "^2.0.19",
+    "pg": "^8.7.3"
+  }
+}
