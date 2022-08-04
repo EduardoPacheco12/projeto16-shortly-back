@@ -40,3 +40,14 @@ export async function redirectUrl(req, res) {
         res.status(500).send(error);
     }
 }
+
+export async function deleteUrl(req, res) {
+    const { id } = req.params;
+
+    try {
+        await connection.query('DELETE FROM urls WHERE id = $1', [id]);
+        res.sendStatus(204);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}

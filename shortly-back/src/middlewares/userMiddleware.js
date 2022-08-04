@@ -57,3 +57,20 @@ export async function getShortUrlMiddleware(req, res, next) {
 
     next();
 }
+
+export async function deleteUrlUserMiddleware(req, res, next) {
+    const { id } = req.params;
+    const userId = res.locals.userId;
+    
+    const { rows: verifyId } = await connection.query('SELECT * FROM urls WHERE id = $1', [id]);
+    if(!verifyId[0]) {
+        return res.sendStatus(404);
+    }
+
+    const { rows: verifyUrlUser } = await connection.query('SELECT * FROM urls WHERE urls.id = $1 AND urls."userId" = $2',[Number(id), userId]);
+    if(!verifyUrlUser[0]) {
+        return res.sendStatus(401);
+    }
+
+    next();
+}
