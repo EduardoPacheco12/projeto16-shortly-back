@@ -29,3 +29,14 @@ export async function getUrlId(req, res) {
     }
     
 }
+
+export async function redirectUrl(req, res) {
+    const body = res.locals.body;
+
+    try {
+        await connection.query('UPDATE urls SET view = $1 WHERE "shortUrl" = $2',[body.view + 1, body.shortUrl]);
+        res.redirect(body.url);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}

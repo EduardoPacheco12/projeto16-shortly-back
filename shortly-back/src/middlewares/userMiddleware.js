@@ -44,3 +44,16 @@ export async function getUrlIdMiddleware(req, res, next) {
 
     next()
 }
+
+export async function getShortUrlMiddleware(req, res, next) {
+    const { shortUrl } = req.params;
+    
+    const { rows: verifyShortUrl } = await connection.query('SELECT * FROM urls WHERE "shortUrl" = $1', [shortUrl]);
+    if(!verifyShortUrl[0]) {
+        return res.sendStatus(404);
+    }
+
+    res.locals.body = verifyShortUrl[0];
+
+    next();
+}
