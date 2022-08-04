@@ -74,3 +74,14 @@ export async function deleteUrlUserMiddleware(req, res, next) {
 
     next();
 }
+
+export async function getUsersMiddleware(req, res, next) {
+    const userId = res.locals.userId;
+
+    const { rows: verifyUser } = await connection.query('SELECT * FROM users WHERE id = $1', [userId]);
+    if(!verifyUser[0]) {
+        return res.sendStatus(404);
+    }
+
+    next();
+}
