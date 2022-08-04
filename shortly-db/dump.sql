@@ -12,15 +12,6 @@ CREATE TABLE "users" (
 	"createdAt" TIMESTAMP NOT NULL DEFAULT NOW()
 )
 
---Criando a tabela "sessions"
-
-CREATE TABLE "sessions" (
-	"id" SERIAL PRIMARY KEY,
-	"token" TEXT NOT NULL,
-	"userId" INTEGER NOT NULL UNIQUE REFERENCES users(id),
-	"createdAt" TIMESTAMP NOT NULL DEFAULT NOW()
-)
-
 --Criando a tabela "urls"
 
 CREATE TABLE "urls" (
