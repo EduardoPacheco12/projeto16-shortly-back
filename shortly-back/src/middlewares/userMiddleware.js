@@ -1,6 +1,7 @@
 import { postUrlSchema } from "../schemas/usersSchema.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import connection from "../dbs/postgres.js";
 dotenv.config()
 
 export async function tokenValidation(req, res, next) {
@@ -30,4 +31,16 @@ export async function postUrlMiddleware(req, res, next) {
     }
 
     next();
+}
+
+export async function getUrlIdMiddleware(req, res, next) {
+    const { id } = req.params;
+
+    const { rows: verifyId } = await connection.query('SELECT * FROM urls WHERE id = $1', [id]);
+    if(!verifyId[0]) {
+        return res.sendStatus(404);
+    }
+    res.locals.url = verifyId[0];
+
+    next()
 }

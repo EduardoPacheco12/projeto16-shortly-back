@@ -14,3 +14,18 @@ export async function postUrl(req, res) {
         res.status(500).send(error);
     }
 }
+
+export async function getUrlId(req, res) {
+    const { id, url, shortUrl} = res.locals.url;
+    try {
+        const urlData = {
+            id,
+            url,
+            shortUrl
+        }
+        res.status(200).send(urlData);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+    
+}
