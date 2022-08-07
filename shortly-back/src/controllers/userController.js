@@ -35,7 +35,7 @@ export async function redirectUrl(req, res) {
 
     try {
         await connection.query('UPDATE urls SET view = $1 WHERE "shortUrl" = $2',[body.view + 1, body.shortUrl]);
-        res.redirect(body.url);
+        res.status(200).redirect(body.url);
     } catch (error) {
         res.status(500).send(error);
     }
