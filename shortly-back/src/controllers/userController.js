@@ -74,7 +74,7 @@ export async function getUser(req, res) {
             WHERE users.id = $1
             GROUP BY users.id
         `, [userId]);
-        res.status(200).send(userUrls);
+        res.status(200).send(userUrls[0]);
     } catch (error) {
         res.status(500).send(error);
     }

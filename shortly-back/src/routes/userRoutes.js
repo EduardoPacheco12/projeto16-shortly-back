@@ -10,6 +10,6 @@ router.get("/urls/:id", getUrlIdMiddleware, getUrlId);
 router.get("/urls/open/:shortUrl", getShortUrlMiddleware, redirectUrl);
 router.delete("/urls/:id", tokenValidation, deleteUrlUserMiddleware, deleteUrl);
 router.get("/users/me", tokenValidation, getUsersMiddleware, getUser);
-router.get("/rankings", getRankings);
+router.get("/ranking", getRankings);
 
 export default router;
