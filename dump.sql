@@ -108,31 +108,6 @@ ALTER TABLE ONLY public.urls ALTER COLUMN id SET DEFAULT nextval('public.urls_id
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
-
---
--- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.urls (id, url, "shortUrl", view, "userId", "createdAt") FROM stdin;
-2	https://www.google.com.br/	n4q9iEQw_ELNl1_XBXtND	0	4	2022-08-04 10:09:48.237462
-5	https://bootcampra.notion.site/Projeto-Shortly-API-4ffa110c0ebd4e83ad7302cfafd33133	tq9NiF9VaV3CgKYMC0Dxc	2	3	2022-08-04 10:33:16.760376
-7	https://twitter.com/home	DEA9rJQb8WCH8X9tMsV0P	0	4	2022-08-04 13:35:45.454471
-8	https://www.youtube.com/	NHz_1UiXc9347i_3-nBEi	0	5	2022-08-05 14:01:38.241655
-6	https://www.twitch.tv/	Tdkyx_TO2cqZGqc71YYGh	1	4	2022-08-04 13:35:21.942684
-\.
-
-
---
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.users (id, name, email, password, "createdAt") FROM stdin;
-3	João	joao@driven.com.br	$2b$10$WCeXnp7cQHW6ucU/TtcQeuVQC688X/1dTe8asj.GRAd5EjdplVaLK	2022-08-04 00:49:27.030294
-4	Eduardo	edu@gmail.com	$2b$10$wearAvQ1HSg2KMV6e3V8V.LC7g8GU7w22v33pNA8mcihjzfUZSWQK	2022-08-04 01:45:31.999448
-5	Maria	maria@gmail.com	$2b$10$eIaXS4d/1NewW5TPqOMtceysy73lupylxXa8uzNLvGMKRo.X81azO	2022-08-04 15:13:52.14753
-\.
-
-
 --
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
